@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: account-service
+server:
+  servlet:
+    context-path: /app/account-service
+  port: 9097

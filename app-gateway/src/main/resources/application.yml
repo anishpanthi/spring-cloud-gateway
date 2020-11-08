@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: app-gateway
+server:
+  port: 9095
+  servlet:
+    context-path: /app/gateway
+zuul:
+  routes:
+    user-service:
+      path: /app/user-service/**
+      url: http://localhost:9096/
+    account-service:
+      path: /app/account-service/**
+      url: http://localhost:9097/
