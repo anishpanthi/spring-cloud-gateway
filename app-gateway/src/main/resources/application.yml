@@ -1,15 +1,45 @@
 spring:
   application:
     name: app-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: user-service
+        uri: http://localhost:9096
+        predicates:
+          - Path=/user-service/**
+      - id: account-service
+        uri: http://localhost:9097
+        predicates:
+          - Path=/account-service/**
+      enabled: true
 server:
   port: 9095
-  servlet:
-    context-path: /app/gateway
-zuul:
-  routes:
-    user-service:
-      path: /app/user-service/**
-      url: http://localhost:9096/
-    account-service:
-      path: /app/account-service/**
-      url: http://localhost:9097/
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+# Spring Actuator Configurations
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /admin
+  endpoint:
+    health:
+      show-details: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  info:
+    git:
+      mode: full
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: ${spring.application.name}
