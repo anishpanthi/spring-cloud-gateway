@@ -3,7 +3,22 @@
   <component name="issues">
     <option name="index">
       <map>
+        <entry key="/a.dummy">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$APPLICATION_CONFIG_DIR$/scratches/rest-api_19.http">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$USER_HOME$/Documents/HMS Projects/Batch_Suite/.idea/workspace.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/HMS Github Projects/tmv-cod/tmv-cod-api/src/main/resources/application-dev.yml">
           <value>
             <set />
           </value>
@@ -19,6 +34,161 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/.idea/workspace.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/ApiException.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/AuthenticatedUser.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/BaseService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/Constants.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/CrudResponseDto.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/DataAlreadyExists.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/DataAlreadyExistsException.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/DatabaseConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/DateUtil.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/JwtAuthenticationEntryPoint.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/JwtAuthenticationProvider.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/JwtAuthenticationSuccessHandler.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/JwtAuthenticationToken.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/JwtAuthenticationTokenFilter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/JwtTokenMalformedException.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/JwtTokenMissingException.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/JwtTokenValidator.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/JwtUserDto.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/NotFoundException.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/TokenValidator.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/UserDto.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/UserService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/UserServiceImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/domain/User.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/repository/UserRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/security/AuthenticatedUser.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/security/JwtAuthenticationProvider.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/security/JwtTokenValidator.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/security/JwtUserNotFoundException.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app-gateway/src/main/java/net/app/gateway/security/SecurityConfig.java">
           <value>
             <set />
           </value>
