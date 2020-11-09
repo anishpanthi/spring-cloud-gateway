@@ -43,3 +43,8 @@ management:
         enabled: true
     tags:
       application: ${spring.application.name}
+
+jwt:
+  validate: true
+  header: authorization
+  secret: wcml2yxr-ab34-12rg-34is-wi9ejd749ksi
