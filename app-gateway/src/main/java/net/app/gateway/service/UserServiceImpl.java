@@ -39,10 +39,10 @@ public class UserServiceImpl implements UserService {
       throw new ApiException(e.getMessage());
     }
 
-    List<UserDto> userDtoList = new ArrayList<>();
+    var userDtoList = new ArrayList<UserDto>();
 
     usersInDb.forEach(user -> {
-          UserDto userDto = new UserDto();
+          var userDto = new UserDto();
           BeanUtils.copyProperties(user, userDto);
           userDtoList.add(userDto);
         }
@@ -66,9 +66,9 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public UserDto findOne(Long id) throws ApiException {
-    UserDto userDto = new UserDto();
+    var userDto = new UserDto();
     try {
-      Optional<User> user = userRepository.findById(id);
+      var user = userRepository.findById(id);
       if (user.isEmpty()) {
         throw new NotFoundException("Record Not Found By Given Id!!!");
       }
@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserService {
   @Override
   public Object save(UserDto userDto) throws ApiException {
     try {
-      User userInDb = userRepository
+      var userInDb = userRepository
           .findByUsernameOrEmail(userDto.getUsername(), userDto.getEmail());
       if (userInDb != null) {
         throw new DataAlreadyExistsException(
@@ -97,7 +97,7 @@ public class UserServiceImpl implements UserService {
   @Override
   public Object update(UserDto userDto) throws ApiException {
     try {
-      Optional<User> userInDb = userRepository.findById(userDto.getId());
+      var userInDb = userRepository.findById(userDto.getId());
       if (userInDb.isEmpty()) {
         throw new DataAlreadyExistsException(
             "Unable to find " + userDto.getId() + " to update. User doesn't exists!!!");
@@ -111,12 +111,12 @@ public class UserServiceImpl implements UserService {
   @Override
   public Object delete(UserDto userDto) throws ApiException {
     try {
-      Optional<User> userInDb = userRepository.findById(userDto.getId());
+      var userInDb = userRepository.findById(userDto.getId());
       if (userInDb.isEmpty()) {
         throw new DataAlreadyExistsException(
             "Unable to find " + userDto.getId() + " to delete. User doesn't exists!!!");
       }
-      User user = new User();
+      var user = new User();
       BeanUtils.copyProperties(userDto, user);
       userRepository.delete(user);
     } catch (Exception e) {
@@ -153,7 +153,7 @@ public class UserServiceImpl implements UserService {
 
   private Object saveOrUpdate(UserDto userDto, String operation) throws ApiException {
     try {
-      User user = new User();
+      var user = new User();
       BeanUtils.copyProperties(userDto, user);
       userRepository.save(user);
     } catch (Exception e) {

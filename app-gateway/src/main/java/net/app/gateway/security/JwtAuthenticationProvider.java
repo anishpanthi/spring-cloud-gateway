@@ -102,8 +102,10 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
       throw new JwtUserNotFoundException("User with JWT token not found");
     }
 
-    List<GrantedAuthority> authorityList = AuthorityUtils.commaSeparatedStringToAuthorityList(parsedUser.getRole());
+    List<GrantedAuthority> authorityList = AuthorityUtils
+        .commaSeparatedStringToAuthorityList(parsedUser.getRole());
 
-    return new AuthenticatedUser(parsedUser.getId(), parsedUser.getUsername(), token, authorityList);
+    return new AuthenticatedUser(parsedUser.getId(), parsedUser.getUsername(), token,
+        authorityList);
   }
 }

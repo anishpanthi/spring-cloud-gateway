@@ -1,6 +1,5 @@
 package net.app.gateway.security;
 
-import java.util.Arrays;
 import java.util.Collections;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -25,9 +24,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-  private JwtAuthenticationEntryPoint unauthorizedHandler;
+  private final JwtAuthenticationEntryPoint unauthorizedHandler;
 
-  private JwtAuthenticationProvider authenticationProvider;
+  private final JwtAuthenticationProvider authenticationProvider;
 
   @Bean
   @Override
@@ -39,7 +38,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   public JwtAuthenticationTokenFilter authenticationTokenFilterBean() throws Exception {
     JwtAuthenticationTokenFilter authenticationTokenFilter = new JwtAuthenticationTokenFilter();
     authenticationTokenFilter.setAuthenticationManager(authenticationManager());
-    authenticationTokenFilter.setAuthenticationSuccessHandler(new JwtAuthenticationSuccessHandler());
+    authenticationTokenFilter
+        .setAuthenticationSuccessHandler(new JwtAuthenticationSuccessHandler());
     return authenticationTokenFilter;
   }
 
@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // we don't need CSRF because our token is invulnerable
         .csrf().disable()
         // permit swagger, console, auth and dashboard for all
-        .authorizeRequests().antMatchers( "/swagger-ui.html", "/auth", "/*.html",
+        .authorizeRequests().antMatchers("/swagger-ui.html", "/auth", "/*.html",
         "/**/*.css", "/**/*.js", "/v2/api-docs", "/api-docs", "/configuration/ui",
         "/swagger-resources", "/configuration/security", "/favicon.ico", "/**/*.html",
         "/webjars/**", "/swagger-resources/configuration/security",
@@ -63,7 +63,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // don't create session
     httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     // Custom JWT based security filter
-    httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
+    httpSecurity.addFilterBefore(authenticationTokenFilterBean(),
+        UsernamePasswordAuthenticationFilter.class);
     // disable page caching
     httpSecurity.headers().cacheControl();
   }

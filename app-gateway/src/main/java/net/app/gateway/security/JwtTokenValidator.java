@@ -1,6 +1,5 @@
 package net.app.gateway.security;
 
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import jakarta.xml.bind.DatatypeConverter;
@@ -20,10 +19,11 @@ public class JwtTokenValidator {
     JwtUserDto jwtUserDto = null;
 
     try {
-      Claims body = Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(secret)).parseClaimsJws(token).getBody();
-      String userId = body.get("userId").toString();
-      String subject = body.getSubject();
-      String role = (String) body.get("role");
+      var body = Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(secret))
+          .parseClaimsJws(token).getBody();
+      var userId = body.get("userId").toString();
+      var subject = body.getSubject();
+      var role = (String) body.get("role");
       jwtUserDto = new JwtUserDto(Long.parseLong(userId), subject, role);
       log.info("Logged in User:: {}", jwtUserDto.toString());
     } catch (JwtException e) {
