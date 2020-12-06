@@ -53,6 +53,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/controller/AuthenticationController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/controller/UserController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/dto/ApiResponse.java">
           <value>
             <set />
@@ -64,6 +74,31 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/entity/User.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/repository/UserRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/service/BaseService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/service/UserService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/service/impl/UserServiceImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/util/DateUtil.java">
           <value>
             <set />
           </value>
