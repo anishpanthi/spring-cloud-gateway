@@ -10,7 +10,6 @@ import net.app.order.dto.OrderDetailsDto;
 import net.app.order.entity.OrderDetails;
 import net.app.order.repository.OrderDetailsRepository;
 import net.app.order.service.OrderDetailsService;
-import org.apache.http.HttpStatus;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -65,19 +64,19 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     return orderDetailsPage.map(this::convertToDto);
   }
 
-  private OrderDetailsDto convertToDto(OrderDetails orderDetails){
+  private OrderDetailsDto convertToDto(OrderDetails orderDetails) {
     var orderDetailsDto = new OrderDetailsDto();
     BeanUtils.copyProperties(orderDetails, orderDetailsDto);
     return orderDetailsDto;
   }
 
-  private OrderDetails convertToEntity(OrderDetailsDto orderDetailsDto){
+  private OrderDetails convertToEntity(OrderDetailsDto orderDetailsDto) {
     var orderDetails = new OrderDetails();
     BeanUtils.copyProperties(orderDetailsDto, orderDetails);
     return orderDetails;
   }
 
-  private ApiResponse createApiResponse(){
+  private ApiResponse createApiResponse() {
     return ApiResponse.builder().apiMessage("Record Deleted!").status("SUCCESS").timeStamp(
         LocalDateTime.now()).build();
   }
