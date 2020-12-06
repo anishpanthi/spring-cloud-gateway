@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class InventoryDetailsServiceImpl implements InventoryDetailsService {
 
-  private InventoryDetailsRepository inventoryDetailsRepository;
+  private final InventoryDetailsRepository inventoryDetailsRepository;
 
   @Override
   public Optional<InventoryDetailsDto> findOne(Long aLong) {
