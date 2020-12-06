@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -45,10 +46,11 @@ public class UserController {
     return new ResponseEntity<>(userService.update(userDto), HttpStatus.OK);
   }
 
-  @PostMapping(value = "/users", consumes = MediaType.APPLICATION_JSON_VALUE,
+  @DeleteMapping(value = "/users", consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<ApiResponse> deleteUsers(
       @RequestBody UserDto userDto) {
     return new ResponseEntity<>(userService.delete(userDto), HttpStatus.OK);
 
   }
+}
