@@ -1,4 +1,4 @@
-package net.app.order;
+package net.app.order.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
