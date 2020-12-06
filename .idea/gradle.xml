@@ -19,11 +19,11 @@
         <option name="delegatedBuild" value="true" />
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/app-gateway" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/authentication-service" />
         <option name="gradleJvm" value="15" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/app-gateway" />
+            <option value="$PROJECT_DIR$/authentication-service" />
           </set>
         </option>
       </GradleProjectSettings>
