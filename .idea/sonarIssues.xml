@@ -223,6 +223,21 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/inventory-service/src/main/java/net/app/inventory/config/DatabaseConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/inventory-service/src/main/java/net/app/inventory/entity/InventoryDetails.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/inventory-service/src/main/java/net/app/inventory/repository/InventoryDetailsRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/inventory-service/src/main/resources/application.yml">
           <value>
             <set />
@@ -264,6 +279,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/order-service/src/main/resources/application.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http">
           <value>
             <set />
           </value>

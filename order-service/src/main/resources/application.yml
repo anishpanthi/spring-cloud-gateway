@@ -6,7 +6,7 @@ spring:
     username: root
     password: admin
     hikari:
-      maximum-pool-size: 100
+      maximum-pool-size: 10
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     generate-ddl: true

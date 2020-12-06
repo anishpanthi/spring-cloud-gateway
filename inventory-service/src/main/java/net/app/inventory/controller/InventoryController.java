@@ -1,4 +1,4 @@
-package net.app.inventory;
+package net.app.inventory.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
