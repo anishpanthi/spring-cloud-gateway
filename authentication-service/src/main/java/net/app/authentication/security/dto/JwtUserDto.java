@@ -1,7 +1,6 @@
-package net.app.authentication.dto;
+package net.app.authentication.security.dto;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,9 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDto implements Serializable {
-
-  private Long id;
+public class JwtUserDto implements Serializable {
 
   private String firstName;
 
@@ -21,13 +18,5 @@ public class UserDto implements Serializable {
 
   private String username;
 
-  private String password;
-
   private String role;
-
-  private Boolean isActive;
-
-  private LocalDateTime createdOn;
-
-  private LocalDateTime updatedOn;
 }

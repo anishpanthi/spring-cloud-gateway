@@ -13,5 +13,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/inventory_service</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="authentication_service" uuid="f3395d25-96d5-4a4f-a15b-0393b7d2fc24">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/authentication_service</jdbc-url>
+    </data-source>
   </component>
 </project>

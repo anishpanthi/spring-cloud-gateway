@@ -6,13 +6,19 @@ import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.app.authentication.dto.ApiResponse;
+import net.app.authentication.dto.LoginResponse;
 import net.app.authentication.dto.UserDto;
 import net.app.authentication.entity.User;
+import net.app.authentication.exception.NotFoundException;
 import net.app.authentication.repository.UserRepository;
+import net.app.authentication.security.dto.JwtUserDto;
+import net.app.authentication.security.util.JwtTokenGenerator;
 import net.app.authentication.service.UserService;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -24,6 +30,11 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
   private final UserRepository userRepository;
+
+  private final BCryptPasswordEncoder passwordEncoder;
+
+  @Value("${jwt.secret}")
+  private String secret;
 
   @Override
   public Optional<UserDto> findOne(Long aLong) {
@@ -38,6 +49,8 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public UserDto create(UserDto userDto) {
+    final String password = userDto.getPassword();
+    userDto.setPassword(passwordEncoder.encode(password));
     var user = new User();
     BeanUtils.copyProperties(userDto, user);
     userRepository.save(user);
@@ -62,6 +75,32 @@ public class UserServiceImpl implements UserService {
     return userPage.map(this::convertToDto);
   }
 
+  @Override
+  public Optional<User> findUserByUsername(String username) {
+    return userRepository.findUserByUsername(username);
+  }
+
+  @Override
+  public LoginResponse authenticateUser(UserDto userDto) {
+    var userInDb = findUserByUsernameAndPassword(userDto.getUsername(),
+        userDto.getPassword());
+    var jwtUserDto = new JwtUserDto(userInDb.getFirstName(), userInDb.getLastName(),
+        userInDb.getEmail(), userInDb.getUsername(), userInDb.getRole());
+    var token = JwtTokenGenerator.generateToken(jwtUserDto, secret);
+    return new LoginResponse("SUCCESS", LocalDateTime.now(), token);
+  }
+
+  @Override
+  public User findUserByUsernameAndPassword(String username, String password) {
+    var userOptional = findUserByUsername(username);
+    if (userOptional.isPresent() && passwordEncoder
+        .matches(password, userOptional.get().getPassword())) {
+      return userOptional.get();
+    } else {
+      throw new NotFoundException("Username or password mismatched.");
+    }
+  }
+
   private UserDto convertToDto(User user) {
     var userDto = new UserDto();
     BeanUtils.copyProperties(user, userDto);
@@ -75,7 +114,7 @@ public class UserServiceImpl implements UserService {
   }
 
   private ApiResponse createApiResponse() {
-    return ApiResponse.builder().apiMessage("Record Deleted!").status("SUCCESS").timeStamp(
+    return ApiResponse.builder().message("Record Deleted!").status("SUCCESS").timeStamp(
         LocalDateTime.now()).build();
   }
 }
