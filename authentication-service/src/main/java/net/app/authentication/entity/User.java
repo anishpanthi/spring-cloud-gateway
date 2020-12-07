@@ -1,6 +1,5 @@
 package net.app.authentication.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
@@ -42,9 +41,14 @@ public class User implements Serializable {
   @Column(name = "USERNAME")
   private String username;
 
-  @JsonIgnore
   @Column(name = "PASSWORD")
   private String password;
+
+  @Column(name = "ROLE")
+  private String role;
+
+  @Column(name = "IS_ACTIVE")
+  private Boolean isActive;
 
   @Column(name = "CREATED_ON")
   @CreationTimestamp

@@ -53,6 +53,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/config/AppConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/config/DatabaseConfig.java">
           <value>
             <set />
@@ -73,6 +78,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/dto/LoginResponse.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/dto/UserDto.java">
           <value>
             <set />
@@ -83,7 +93,67 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/exception/handler/GlobalExceptionHandler.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/repository/UserRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/security/JwtAuthenticationEntryPoint.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/security/JwtAuthenticationProvider.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/security/JwtAuthenticationSuccessHandler.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/security/JwtAuthenticationTokenFilter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/security/config/SecurityConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/security/dto/AuthenticatedUser.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/security/dto/JwtAuthenticationToken.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/security/dto/JwtUserDto.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/security/exception/JwtTokenMalformedException.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/security/util/JwtTokenGenerator.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/security/util/JwtTokenValidator.java">
           <value>
             <set />
           </value>
@@ -439,6 +509,11 @@
           </value>
         </entry>
         <entry key="$APPLICATION_CONFIG_DIR$/scratches/rest-api_3.http">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$APPLICATION_CONFIG_DIR$/scratches/rest-api_4.http">
           <value>
             <set />
           </value>
