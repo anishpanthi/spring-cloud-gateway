@@ -43,6 +43,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/Dockerfile">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/authentication-service/build.gradle">
           <value>
             <set />
@@ -144,6 +149,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/security/exception/JwtTokenMalformedException.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/security/interceptor/RequestResponseInterceptor.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/authentication-service/src/main/java/net/app/authentication/security/util/HeaderUtil.java">
           <value>
             <set />
           </value>
@@ -363,12 +378,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/eureka-server/Dockerfile">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/eureka-server/build.gradle">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/eureka-server/gradle/wrapper/gradle-wrapper.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/inventory-service/Dockerfile">
           <value>
             <set />
           </value>
@@ -424,6 +449,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/inventory-service/src/main/resources/application.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/order-service/Dockerfile">
           <value>
             <set />
           </value>
@@ -514,6 +544,11 @@
           </value>
         </entry>
         <entry key="$APPLICATION_CONFIG_DIR$/scratches/rest-api_4.http">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$APPLICATION_CONFIG_DIR$/scratches/rest-api_5.http">
           <value>
             <set />
           </value>

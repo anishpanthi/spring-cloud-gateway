@@ -1,6 +1,7 @@
 package net.app.authentication.exception.handler;
 
 import java.time.LocalDateTime;
+import lombok.extern.slf4j.Slf4j;
 import net.app.authentication.dto.ApiResponse;
 import net.app.authentication.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
  * @author Anish Panthi
  */
 @RestControllerAdvice
+@Slf4j
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
   @ExceptionHandler(NotFoundException.class)
@@ -24,6 +26,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
   @ExceptionHandler(AuthenticationException.class)
   public ResponseEntity<ApiResponse> handleAuthenticationException(AuthenticationException ae){
     return new ResponseEntity<>(generateErrorResponse(ae.getMessage()), HttpStatus.UNAUTHORIZED);
+  }
+
+  @ExceptionHandler(Exception.class)
+  public ResponseEntity<ApiResponse> handleAllOtherException(Exception e){
+    log.error("", e);
+    return new ResponseEntity<>(generateErrorResponse(e.getMessage()), HttpStatus.OK);
   }
 
   private ApiResponse generateErrorResponse(String message){

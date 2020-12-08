@@ -21,13 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Anish Panthi
  */
 @RestController
-@RequestMapping("/v1")
+//@RequestMapping("/v1")
 @RequiredArgsConstructor
 public class InventoryController {
 
   private final InventoryDetailsService inventoryDetailsService;
 
-  @GetMapping(value = "/inventoryDetails")
+  @GetMapping(value = "/")
   public ResponseEntity<Page<InventoryDetailsDto>> getInventories(Pageable pageable) {
     return new ResponseEntity<>(inventoryDetailsService.findAll(pageable), HttpStatus.OK);
   }
