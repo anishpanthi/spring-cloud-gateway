@@ -2,34 +2,13 @@ spring:
   application:
     name: inventory-service
   datasource:
-    url: jdbc:mysql://localhost:3306/inventory_service?serverTimezone=America/Chicago&createDatabaseIfNotExist=true&useLegacyDatatimeCode=false
-    username: root
-    password: admin
-    hikari:
-      maximum-pool-size: 10
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    generate-ddl: true
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    properties:
-      hibernate:
-        format_sql: true
-  cloud:
-    loadbalancer:
-      ribbon:
-        enabled: false
-  profiles:
-    active: gateway
+    url: jdbc:postgresql://localhost/inventory_service
+    username: myuser
+    password: secret
 
-eureka:
-  instance:
-    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}}
+server:
+  port: 8082
 
-# Spring Actuator Configurations
 management:
   endpoints:
     web:
@@ -43,7 +22,7 @@ management:
       enabled: true
     prometheus:
       enabled: true
-  metrics:
-    export:
-      prometheus:
+  prometheus:
+    metrics:
+      export:
         enabled: true

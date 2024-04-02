@@ -19,36 +19,10 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-    loadbalancer:
-      ribbon:
-        enabled: false
-  datasource:
-    url: jdbc:mysql://localhost:3306/authentication_service?serverTimezone=America/Chicago&createDatabaseIfNotExist=true&useLegacyDatatimeCode=false
-    username: root
-    password: admin
-    hikari:
-      maximum-pool-size: 10
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    generate-ddl: true
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    properties:
-      hibernate:
-        format_sql: true
+
 server:
   port: 8080
-#  servlet:
-#    context-path: /gateway/api
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
 
-# Spring Actuator Configurations
 management:
   endpoints:
     web:
@@ -65,12 +39,10 @@ management:
   info:
     git:
       mode: full
-  metrics:
-    export:
-      prometheus:
+  prometheus:
+    metrics:
+      export:
         enabled: true
-    tags:
-      application: ${spring.application.name}
 
 logging:
   level:
