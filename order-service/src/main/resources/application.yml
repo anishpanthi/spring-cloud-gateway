@@ -2,7 +2,7 @@ spring:
   application:
     name: order-service
   datasource:
-    url: jdbc:postgresql://localhost/order_service
+    url: jdbc:postgresql://localhost:5431/gateway-service
     username: myuser
     password: secret
 
