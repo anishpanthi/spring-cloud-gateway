@@ -1,5 +1,6 @@
 package net.app.order.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,7 +29,7 @@ import org.springframework.data.domain.Persistable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "ORDER")
+@Table(name = "ORDERS")
 public class Order implements Persistable<Long> {
 
   @Id
@@ -48,12 +49,14 @@ public class Order implements Persistable<Long> {
   @Column(name = "TOTAL_AMOUNT", precision = 6, scale = 2)
   private BigDecimal totalAmount;
 
-  @Column(name = "CREATED_ON")
+  @Column(name = "CREATED_AT")
   @CreationTimestamp
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
   private LocalDateTime createdOn;
 
-  @Column(name = "UPDATED_ON")
+  @Column(name = "UPDATED_AT")
   @UpdateTimestamp
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
   private LocalDateTime updatedOn;
 
   /**

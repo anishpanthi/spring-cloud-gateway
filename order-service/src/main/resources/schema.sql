@@ -1,4 +1,4 @@
-create table if not exists order
+create table if not exists orders
 (
     id serial primary key,
     item_name varchar(100) not null,
@@ -7,6 +7,6 @@ create table if not exists order
     total_amount decimal(6,2) not null,
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp
-)
+);
 
 
