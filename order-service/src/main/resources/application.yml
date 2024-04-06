@@ -2,9 +2,9 @@ spring:
   application:
     name: order-service
   datasource:
-    url: jdbc:postgresql://localhost:5431/gateway-service
-    username: myuser
-    password: secret
+    url: jdbc:postgresql://localhost:5431/ecommerce
+    username: postgres
+    password: postgres
 
 server:
   port: 8081
@@ -26,3 +26,6 @@ management:
     metrics:
       export:
         enabled: true
+  tracing:
+    sampling:
+      probability: 1.0

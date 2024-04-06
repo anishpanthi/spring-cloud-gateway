@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import lombok.AllArgsConstructor;
@@ -27,25 +28,25 @@ import org.springframework.data.domain.Persistable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "ORDER_DETAILS")
-public class OrderDetails implements Persistable<Long> {
+@Table(name = "ORDER")
+public class Order implements Persistable<Long> {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "ORDER_ID", updatable = false, nullable = false)
+  @Column(name = "ID", updatable = false, nullable = false)
   private Long id;
 
   @Column(name = "ITEM_NAME")
   private String itemName;
 
-  @Column(name = "ITEM_PRICE")
-  private Double itemPrice;
+  @Column(name = "ITEM_PRICE", precision = 6, scale = 2)
+  private BigDecimal itemPrice;
 
   @Column(name = "TOTAL_QUANTITY")
-  private Integer totalQuantity;
+  private int totalQuantity;
 
-  @Column(name = "TOTAL_AMOUNT")
-  private Double totalAmount;
+  @Column(name = "TOTAL_AMOUNT", precision = 6, scale = 2)
+  private BigDecimal totalAmount;
 
   @Column(name = "CREATED_ON")
   @CreationTimestamp
@@ -82,7 +83,7 @@ public class OrderDetails implements Persistable<Long> {
     if (thisEffectiveClass != oEffectiveClass) {
       return false;
     }
-    OrderDetails that = (OrderDetails) o;
+    Order that = (Order) o;
     return getId() != null && Objects.equals(getId(), that.getId());
   }
 
