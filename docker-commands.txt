@@ -1,0 +1,26 @@
+1. To create docker image:
+  Step 1: Create a Dockerfile
+  Step 2: Build the docker image with the command 'docker build -t <image_name>:<tag> .'
+  Step 3: List the docker images with the command 'docker images'
+
+2. To run docker image:
+  Step 1: Run the docker image with the command 'docker run -d -p 8080:8080 <image_name>:<tag>'
+  Step 2: List the running docker containers with the command 'docker ps'
+  Step 3: Access the application at 'http://localhost:8080'
+  Step 4: To stop the running container, follow the steps in the next section
+
+3. To stop docker container:
+  Step 1: List the running docker containers with the command 'docker ps'
+  Step 2: Stop the running container with the command 'docker stop <container_id>'
+
+4. To remove docker container:
+  Step 1: List the docker containers with the command 'docker ps -a'
+  Step 2: Remove the container with the command 'docker rm <container_id>'
+
+5. To run the docker image in a container:
+  docker run -d -p 8761:8761 <image_name>:<tag>
+
+6. To push the docker image to dockerhub
+  Step 1: Login to dockerhub with the command 'docker login'
+  Step 2: Tag the image with the command 'docker tag <image_id> <dockerhub_username>/<image_name>:<tag>'
+  Step 3: Push the image to dockerhub with the command 'docker push <dockerhub_username>/<image_name>:<tag>'
