@@ -1,19 +1,19 @@
 spring:
   application:
-    name: api-gateway
+    name: gateway-service
   cloud:
     gateway:
       routes:
       - id: inventory-service
         uri: lb://inventory-service
         predicates:
-          - Path=/inventory/**
-#        filters:
-#          - RewritePath=/inventory-service/(?<segment>.*), /${segment}
-#      - id: order-service
-#        uri: lb://order-service
-#        predicates:
-#          - Path=/order-service/**
+          - Path=/is/api/**
+        filters:
+          - RewritePath=/inventory-service/(?<segment>.*), /${segment}
+      - id: order-service
+        uri: lb://order-service
+        predicates:
+          - Path=/os/api/v1/orders
       enabled: true
       discovery:
         locator:
@@ -35,6 +35,8 @@ management:
     metrics:
       enabled: true
     prometheus:
+      enabled: true
+    gateway:
       enabled: true
   info:
     git:
