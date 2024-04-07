@@ -71,6 +71,6 @@ public class InventoryServiceImpl implements InventoryService {
 
   private InventoryDto convertToDto(Inventory inventory) {
     return new InventoryDto(inventory.getId(), inventory.getItemName(),
-        inventory.getItemPrice(), inventory.getTotalSold(), inventory.getTotalAvailable());
+        inventory.getItemPrice(), inventory.getTotalAvailable(), inventory.getTotalSold());
   }
 }
