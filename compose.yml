@@ -9,24 +9,31 @@ services:
       - '5431:5432'
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-#  eureka-service:
-#    image: 'anishpanthi/eureka-service:latest'
-#    container_name: 'eureka-service'
-#    ports:
-#      - '8761:8761'
-#  order-service:
-#    image: 'anishpanthi/order-service:latest'
-#    container_name: 'order-service'
-#    ports:
-#      - '8081:8081'
-#    depends_on:
-#      - gateway-service-db
-#      - eureka-service
-#  inventory-service:
-#    image: 'anishpanthi/inventory-service:latest'
-#    container_name: 'inventory-service'
-#    ports:
-#      - '8082:8082'
-#    depends_on:
-#      - gateway-service-db
-#      - eureka-service
+  eureka-service:
+    image: 'anishpanthi/eureka-service:latest'
+    container_name: 'eureka-service'
+    ports:
+      - '8761:8761'
+  gateway-service:
+    image: 'anishpanthi/gateway-service:latest'
+    container_name: 'gateway-service'
+    ports:
+      - '8080:8080'
+    depends_on:
+      - eureka-service
+  order-service:
+    image: 'anishpanthi/order-service:latest'
+    container_name: 'order-service'
+    ports:
+      - '8081:8081'
+    depends_on:
+      - gateway-service-db
+      - eureka-service
+  inventory-service:
+    image: 'anishpanthi/inventory-service:latest'
+    container_name: 'inventory-service'
+    ports:
+      - '8082:8082'
+    depends_on:
+      - gateway-service-db
+      - eureka-service
