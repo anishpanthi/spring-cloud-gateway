@@ -15,5 +15,4 @@ public class ApiConfig {
   ObservedAspect observedAspect(ObservationRegistry observationRegistry) {
     return new ObservedAspect(observationRegistry);
   }
-
 }
