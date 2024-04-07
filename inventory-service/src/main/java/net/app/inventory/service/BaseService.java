@@ -2,7 +2,6 @@ package net.app.inventory.service;
 
 import java.util.List;
 import java.util.Optional;
-import net.app.inventory.dto.ApiResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -12,7 +11,6 @@ import org.springframework.data.domain.Pageable;
  * @param <E>  indicates entity class
  * @param <T>  indicates dto class for entity
  * @param <ID> indicates primary key type
- *
  * @author Anish Panthi
  */
 public interface BaseService<E, T, ID> {
@@ -23,11 +21,11 @@ public interface BaseService<E, T, ID> {
 
   T create(T t);
 
-  ApiResponse delete(T t);
+  void delete(ID id);
 
   T update(T t);
 
-  default Page<T> findAll(Pageable pageable){
+  default Page<T> findAll(Pageable pageable) {
     return null;
   }
 

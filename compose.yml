@@ -1,9 +1,25 @@
 services:
-  postgres:
+  order-service-db:
     image: 'postgres:latest'
+    container_name: 'order-service-db'
     environment:
-      - 'POSTGRES_DB=ecommerce'
+      - 'POSTGRES_DB=inventory-service'
+      - 'POSTGRES_PASSWORD=postgres'
+      - 'POSTGRES_USER=postgres'
+    ports:
+      - '5432:5432'
+
+  inventory-service-db:
+    image: 'postgres:latest'
+    container_name: 'inventory-service-db'
+    environment:
+      - 'POSTGRES_DB=order-service'
       - 'POSTGRES_PASSWORD=postgres'
       - 'POSTGRES_USER=postgres'
     ports:
       - '5431:5432'
+
+  image: 'eureka-service:latest'
+  container_name: 'eureka-service'
+  ports:
+    - '8761:8761'

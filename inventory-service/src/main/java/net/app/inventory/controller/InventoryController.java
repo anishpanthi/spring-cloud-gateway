@@ -1,16 +1,16 @@
 package net.app.inventory.controller;
 
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import net.app.inventory.dto.ApiResponse;
-import net.app.inventory.dto.InventoryDetailsDto;
-import net.app.inventory.service.InventoryDetailsService;
+import net.app.inventory.dto.InventoryDto;
+import net.app.inventory.service.InventoryService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,35 +21,37 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Anish Panthi
  */
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/v1/inventory")
 @RequiredArgsConstructor
 public class InventoryController {
 
-  private final InventoryDetailsService inventoryDetailsService;
+  private final InventoryService inventoryService;
 
-  @GetMapping(value = "/inventoryDetails")
-  public ResponseEntity<Page<InventoryDetailsDto>> getInventories(Pageable pageable) {
-    return new ResponseEntity<>(inventoryDetailsService.findAll(pageable), HttpStatus.OK);
+  @GetMapping
+  public ResponseEntity<Page<InventoryDto>> getInventories(Pageable pageable) {
+    return new ResponseEntity<>(inventoryService.findAll(pageable), HttpStatus.OK);
   }
 
-  @PostMapping(value = "/inventoryDetails", consumes = MediaType.APPLICATION_JSON_VALUE,
-      produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<InventoryDetailsDto> createInventories(
-      @RequestBody InventoryDetailsDto inventoryDetailsDto) {
-    return new ResponseEntity<>(inventoryDetailsService.create(inventoryDetailsDto), HttpStatus.OK);
+  @GetMapping("/{id}")
+  public ResponseEntity<Optional<InventoryDto>> getInventories(@PathVariable Long id) {
+    return new ResponseEntity<>(inventoryService.findOne(id), HttpStatus.OK);
   }
 
-  @PutMapping(value = "/inventoryDetails", consumes = MediaType.APPLICATION_JSON_VALUE,
-      produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<InventoryDetailsDto> updateInventories(
-      @RequestBody InventoryDetailsDto inventoryDetailsDto) {
-    return new ResponseEntity<>(inventoryDetailsService.update(inventoryDetailsDto), HttpStatus.OK);
+  @PostMapping
+  public ResponseEntity<InventoryDto> createInventories(
+      @RequestBody InventoryDto inventoryDto) {
+    return new ResponseEntity<>(inventoryService.create(inventoryDto), HttpStatus.CREATED);
   }
 
-  @DeleteMapping(value = "/inventoryDetails", consumes = MediaType.APPLICATION_JSON_VALUE,
-      produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<ApiResponse> deleteInventories(
-      @RequestBody InventoryDetailsDto inventoryDetailsDto) {
-    return new ResponseEntity<>(inventoryDetailsService.delete(inventoryDetailsDto), HttpStatus.OK);
+  @PutMapping
+  public ResponseEntity<InventoryDto> updateInventories(
+      @RequestBody InventoryDto inventoryDto) {
+    return new ResponseEntity<>(inventoryService.update(inventoryDto), HttpStatus.NO_CONTENT);
+  }
+
+  @DeleteMapping(value = "/{id}}")
+  public ResponseEntity<Void> deleteInventories(@PathVariable Long id) {
+    inventoryService.delete(id);
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 }
