@@ -49,7 +49,7 @@ public class InventoryController {
     return new ResponseEntity<>(inventoryService.update(inventoryDto), HttpStatus.NO_CONTENT);
   }
 
-  @DeleteMapping(value = "/{id}}")
+  @DeleteMapping(value = "/{id}")
   public ResponseEntity<Void> deleteInventories(@PathVariable Long id) {
     inventoryService.delete(id);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);

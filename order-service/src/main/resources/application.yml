@@ -2,7 +2,7 @@ spring:
   application:
     name: order-service
   datasource:
-    url: jdbc:postgresql://localhost:5431/order-service
+    url: jdbc:postgresql://localhost:5431/order-_db
     username: postgres
     password: postgres
   sql:
@@ -11,6 +11,8 @@ spring:
   docker:
     compose:
       lifecycle-management: start_only
+  jpa:
+    open-in-view: false
 
 server:
   port: 8081

@@ -2,7 +2,7 @@ spring:
   application:
     name: inventory-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/inventory-service
+    url: jdbc:postgresql://localhost:5431/inventory_db
     username: postgres
     password: postgres
   sql:
@@ -11,9 +11,11 @@ spring:
   docker:
     compose:
       lifecycle-management: start_only
+  jpa:
+    open-in-view: false
 
 server:
-  port: 8081
+  port: 8082
 
 management:
   endpoints:
