@@ -10,15 +10,39 @@ spring:
           - Path=/is/api/**
         filters:
           - RewritePath=/inventory-service/(?<segment>.*), /${segment}
+          - AddRequestHeader=X-Origin, gateway-service
+          - name: CircuitBreaker
+            args:
+              name: inventory-service
+              fallbackUri: forward:/fallback/inventory
       - id: order-service
         uri: lb://order-service
         predicates:
           - Path=/os/api/v1/orders
+        filters:
+          - AddRequestHeader=X-Origin, gateway-service
+          - name: CircuitBreaker
+            args:
+              name: order-service
+              fallbackUri: forward:/fallback/order
       enabled: true
       discovery:
         locator:
           enabled: true
           lower-case-service-id: true
+      default-filters:
+        - name: RequestRateLimiter
+          args:
+            redis-rate-limiter.replenishRate: 10
+            redis-rate-limiter.burstCapacity: 20
+            redis-rate-limiter.requestedTokens: 1
+        - name: Retry
+          args:
+            retries: 3
+            method: GET
+            backoff:
+              firstBackoff: 100ms
+              maxBackoff: 500ms
 
 server:
   port: 8080
@@ -50,3 +74,27 @@ logging:
   level:
     root: info
     org.springframework.cloud.gateway: debug
+    org.springframework.web: debug
+    com.netflix: off
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      order-service:
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 1000s
+        register-health-indicator: true
+      inventory-service:
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 1000s
+        register-health-indicator: true
+  timelimiter:
+    instances:
+      order-service:
+        timeoutDuration: 3s
+      inventory-service:
+        timeoutDuration: 3s

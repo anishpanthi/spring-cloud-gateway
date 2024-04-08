@@ -1,0 +1,15 @@
+GET http://localhost:8080/os/api/v1/orders
+
+###
+
+GET http://localhost:8080/is/api/v1/inventory
+
+###
+
+GET http://localhost:8081/os/api/v1/orders
+
+###
+
+GET http://localhost:8082/is/api/v1/inventory
+
+###
