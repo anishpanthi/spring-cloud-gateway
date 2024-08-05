@@ -5,7 +5,9 @@ CREATE TABLE IF NOT EXISTS PRODUCTS
     name        VARCHAR(255)        NOT NULL,
     description TEXT,
     category    VARCHAR(255),
-    price       DECIMAL(10, 2)      NOT NULL
+    price       DECIMAL(10, 2)      NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 INSERT INTO products (product_id, name, description, category, price)
 VALUES ('P001', 'Laptop', 'High-performance laptop', 'Electronics', 1200.00),
@@ -18,7 +20,9 @@ CREATE TABLE IF NOT EXISTS INVENTORY
 (
     id         SERIAL PRIMARY KEY,
     product_id VARCHAR(255) NOT NULL REFERENCES PRODUCTS (product_id),
-    quantity   INT          NOT NULL
+    quantity   INT          NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 INSERT INTO inventory (product_id, quantity)
 VALUES ('P001', 50),
@@ -29,10 +33,11 @@ VALUES ('P001', 50),
 
 CREATE TABLE IF NOT EXISTS INVENTORY_TRANSACTIONS
 (
-    id               SERIAL PRIMARY KEY,
-    product_id       VARCHAR(255) NOT NULL REFERENCES PRODUCTS (product_id),
-    transaction_type VARCHAR(50)  NOT NULL, -- e.g., "INCREASE", "DECREASE"
-    quantity         INT          NOT NULL,
-    transaction_date TIMESTAMP    NOT NULL,
-    order_id         INT                    -- Nullable, can link back to an order
+    id                   SERIAL PRIMARY KEY,
+    product_id           VARCHAR(255) NOT NULL REFERENCES PRODUCTS (product_id),
+    transaction_type     VARCHAR(50)  NOT NULL, -- e.g., "INCREASE", "DECREASE"
+    quantity             INT          NOT NULL,
+    order_id             INT,                    -- Nullable, can link back to an order
+    transaction_at       TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at           TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

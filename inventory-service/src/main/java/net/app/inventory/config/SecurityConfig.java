@@ -16,7 +16,7 @@ public class SecurityConfig {
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests(
-            auth -> auth.requestMatchers("/actuator/**", "/manage/**").permitAll().anyRequest()
+            auth -> auth.requestMatchers("/admin/**").permitAll().anyRequest()
                 .authenticated())
         .oauth2ResourceServer(oauth2 -> oauth2.jwt(withDefaults()));
     return http.build();

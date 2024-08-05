@@ -18,7 +18,9 @@ CREATE TABLE IF NOT EXISTS ORDER_ITEMS
     order_id   INT            NOT NULL REFERENCES ORDERS (id),
     product_id VARCHAR(255)   NOT NULL,
     quantity   INT            NOT NULL,
-    price      DECIMAL(10, 2) NOT NULL
+    price      DECIMAL(10, 2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 INSERT INTO order_items (order_id, product_id, quantity, price)
 VALUES (1, 'P001', 1, 1200.00), -- Order 1 contains 1 Laptop

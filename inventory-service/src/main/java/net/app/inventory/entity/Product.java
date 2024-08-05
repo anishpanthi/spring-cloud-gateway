@@ -2,40 +2,46 @@ package net.app.inventory.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.domain.Persistable;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 /**
  * @author Anish Panthi
  */
 @Getter
 @Setter
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "PRODUCT")
 @Entity
-@Table(name = "INVENTORY")
-public class Inventory {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Product {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "ID")
   private Long id;
 
-  @ManyToOne
-  @JoinColumn(name = "product_id", referencedColumnName = "product_id")
-  private Product product;
+  @Column(name = "PRODUCT_ID")
+  private String productId;
 
-  private Integer quantity;
+  @Column(name = "NAME")
+  private String name;
+
+  @Column(name = "DESCRIPTION")
+  private String description;
+
+  @Column(name = "CATEGORY")
+  private String category;
+
+  @Column(name = "PRICE")
+  private BigDecimal price;
 
   @Column(name = "CREATED_AT")
   @CreationTimestamp

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import net.app.inventory.ApiUtil;
 import net.app.inventory.dto.InventoryDto;
 import net.app.inventory.entity.Inventory;
 import net.app.inventory.exception.NotFoundException;
@@ -27,23 +28,24 @@ public class InventoryServiceImpl implements InventoryService {
   @Override
   public Optional<InventoryDto> findOne(Long aLong) {
     var inventoryOptional = inventoryRepository.findById(aLong);
-    log.info("Inventory details: {}",
+    log.debug(
+        "Inventory details: {}",
         inventoryOptional.orElseThrow(() -> new NotFoundException("Inventory not found.")));
-    return inventoryOptional.map(this::convertToDto);
+    return inventoryOptional.map(ApiUtil::convertToDto);
   }
 
   @Override
-  public List<Inventory> findAll() {
-    return inventoryRepository.findAll();
+  public List<InventoryDto> findAll() {
+    return inventoryRepository.findAll().stream().map(ApiUtil::convertToDto).toList();
   }
 
   @Override
   public InventoryDto create(InventoryDto inventoryDto) {
     var inventory = new Inventory();
     BeanUtils.copyProperties(inventoryDto, inventory);
-    inventoryRepository.save(inventory);
-    log.info("Inventory created: {}", inventory);
-    return convertToDto(inventory);
+    var savedInventory = inventoryRepository.save(inventory);
+    log.debug("Inventory created: {}", savedInventory);
+    return ApiUtil.convertToDto(savedInventory);
   }
 
   @Override
@@ -58,7 +60,7 @@ public class InventoryServiceImpl implements InventoryService {
       throw new NotFoundException("Inventory id is not found.");
     }
     create(inventoryDto);
-    log.info("Inventory updated: {}", inventoryDto);
+    log.debug("Inventory updated: {}", inventoryDto);
     return inventoryDto;
   }
 
@@ -66,11 +68,6 @@ public class InventoryServiceImpl implements InventoryService {
   public Page<InventoryDto> findAll(Pageable pageable) {
     var inventoryPage = inventoryRepository.findAll(pageable);
     log.info("Total inventories found: {}", inventoryPage.getTotalElements());
-    return inventoryPage.map(this::convertToDto);
-  }
-
-  private InventoryDto convertToDto(Inventory inventory) {
-    return new InventoryDto(inventory.getId(), inventory.getItemName(),
-        inventory.getItemPrice(), inventory.getTotalAvailable(), inventory.getTotalSold());
+    return inventoryPage.map(ApiUtil::convertToDto);
   }
 }

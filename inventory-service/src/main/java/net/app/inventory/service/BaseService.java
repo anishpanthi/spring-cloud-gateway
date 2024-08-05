@@ -17,7 +17,7 @@ public interface BaseService<E, T, ID> {
 
   Optional<T> findOne(ID id);
 
-  List<E> findAll();
+  List<T> findAll();
 
   T create(T t);
 
