@@ -13,6 +13,11 @@ spring:
       lifecycle-management: start_only
   jpa:
     open-in-view: false
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://login.microsoftonline.com/1b286c40-c2fd-46d5-a553-b6502b89f42d/v2.0
 
 server:
   port: 8082
